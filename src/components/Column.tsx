@@ -16,16 +16,25 @@ const Column: React.FC<ColumnProps> = ({ col: { list, id } }) => {
         <div
           style={{
             display: 'flex',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            minHeight: 120
           }}
-          {...provided.droppableProps}
-          ref={provided.innerRef}
         >
           <h2>{id}</h2>
-          {list.map((text, index) => (
-            <Item key={text} text={text} index={index} />
-          ))}
-          {provided.placeholder}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              minHeight: 120
+            }}
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
+            {list.map((text, index) => (
+              <Item key={text} text={text} index={index} />
+            ))}
+            {provided.placeholder}
+          </div>
         </div>
       )}
     </Droppable>
