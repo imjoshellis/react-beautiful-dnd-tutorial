@@ -3,6 +3,21 @@ import Column from './components/Column'
 import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 
 function App () {
+  const initialColumns = {
+    todo: {
+      id: 'todo',
+      list: ['item 1', 'item 2', 'item 3']
+    },
+    doing: {
+      id: 'doing',
+      list: []
+    },
+    done: {
+      id: 'done',
+      list: []
+    }
+  }
+  const [columns] = useState(initialColumns)
   const [list, setList] = useState(['Item 1', 'Item 2', 'Item 3'])
 
   const onDragEnd = ({ source, destination }: DropResult) => {
@@ -34,7 +49,9 @@ function App () {
           gap: '8px'
         }}
       >
-        <Column items={list} />
+        {Object.values(columns).map(col => (
+          <Column col={col} key={col.id} />
+        ))}
       </div>
     </DragDropContext>
   )
