@@ -17,8 +17,7 @@ function App () {
       list: []
     }
   }
-  const [columns] = useState(initialColumns)
-  const [list, setList] = useState(['Item 1', 'Item 2', 'Item 3'])
+  const [columns, setColumns] = useState(initialColumns)
 
   const onDragEnd = ({ source, destination }: DropResult) => {
     // Make sure we have a valid destination
@@ -27,15 +26,31 @@ function App () {
     // Make sure we're actually moving the item
     if (destination.index === source.index) return null
 
-    // Move the item within the list
-    // Start by making a new list without the dragged item
-    const newList = list.filter((_: any, idx: number) => idx !== source.index)
+    // Set start and end variables
+    const start = columns[source.droppableId]
+    const end = columns[destination.droppableId]
 
-    // Then insert the item at the right location
-    newList.splice(destination.index, 0, list[source.index])
+    // If start is the same as end, we're in the same column
+    if (start === end) {
+      // Move the item within the list
+      // Start by making a new list without the dragged item
+      const newList = start.list.filter(
+        (_: any, idx: number) => idx !== source.index
+      )
 
-    // Update the list
-    setList(newList)
+      // Then insert the item at the right location
+      newList.splice(destination.index, 0, start.list[source.index])
+
+      // Then create a new copy of the column object
+      const newCol = {
+        id: start.id,
+        list: newList
+      }
+
+      // Update the state
+      setColumns(state => ({ ...state, [newCol.id]: newCol }))
+      return null
+    }
   }
 
   return (
