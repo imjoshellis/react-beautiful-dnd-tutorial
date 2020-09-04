@@ -4,11 +4,9 @@ Built to supplement a tutorial. [Read on Dev.to]() //todo: add link
 
 ## ✨️ Demo
 
-![demo gif]() //todo: add gif
+![demo gif](https://github.com/imjoshellis/react-beautiful-dnd-tutorial/blob/master/readme/final%20product.gif?raw=true)
 
-Live demo site: [link to netlify deploy]() //todo: add link
-
-Code Sandbox: [link to code sandbox]() //todo: add link
+[Live Demo](https://imjoshellis-dnd-tutorial.netlify.app) • [Code Sandbox](https://codesandbox.io/s/react-beautiful-dnd-tutorial-6296o)
 
 ## 👨🏻‍💻️ Clone Locally
 
