@@ -1,6 +1,16 @@
 import React, { useState } from 'react'
 import Column from './components/Column'
 import { DragDropContext, DropResult } from 'react-beautiful-dnd'
+import { styled } from './stiches.config'
+
+const StyledColumns = styled('div', {
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr 1fr',
+  margin: '10vh auto',
+  width: '80%',
+  height: '80vh',
+  gap: '8px'
+})
 
 function App () {
   const initialColumns = {
@@ -91,19 +101,11 @@ function App () {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr',
-          margin: '24px auto',
-          width: '80%',
-          gap: '8px'
-        }}
-      >
+      <StyledColumns>
         {Object.values(columns).map(col => (
           <Column col={col} key={col.id} />
         ))}
-      </div>
+      </StyledColumns>
     </DragDropContext>
   )
 }
