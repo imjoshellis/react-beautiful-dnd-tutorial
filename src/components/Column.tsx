@@ -3,12 +3,15 @@ import Item from './Item'
 import { Droppable } from 'react-beautiful-dnd'
 
 interface ColumnProps {
-  items: string[]
+  col: {
+    id: string
+    list: string[]
+  }
 }
 
-const Column: React.FC<ColumnProps> = ({ items }) => {
+const Column: React.FC<ColumnProps> = ({ col: { list, id } }) => {
   return (
-    <Droppable droppableId='col-1'>
+    <Droppable droppableId={id}>
       {provided => (
         <div
           style={{
@@ -18,7 +21,8 @@ const Column: React.FC<ColumnProps> = ({ items }) => {
           {...provided.droppableProps}
           ref={provided.innerRef}
         >
-          {items.map((text, index) => (
+          <h2>{id}</h2>
+          {list.map((text, index) => (
             <Item key={text} text={text} index={index} />
           ))}
           {provided.placeholder}
