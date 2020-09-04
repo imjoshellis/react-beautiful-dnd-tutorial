@@ -1,6 +1,6 @@
 # Multi-Column Drag and Drop
 
-Built to supplement a tutorial. [Read on Dev.to]() //todo: add link
+Built to supplement a tutorial. [Read on Dev.to](https://dev.to/imjoshellis/codealong-multi-column-drag-and-drop-in-react-3781)
 
 ## ✨️ Demo
 
